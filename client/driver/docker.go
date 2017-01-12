@@ -937,6 +937,7 @@ func (d *DockerDriver) pullImage(driverConfig *DockerDriverConfig, client *docke
 		authOptions = *authOptionsPtr
 	}
 
+	d.logger.Printf("[DEBUG] driver.docker: docker auth %+v", authOptions)
 	d.emitEvent("Downloading image %s:%s", repo, tag)
 	err := client.PullImage(pullOptions, authOptions)
 	if err != nil {
